@@ -1,0 +1,35 @@
+{
+  "name": "knex_tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./dist/server.js",
+    "start:dev": "nodemon ./src/server.ts",
+    "test": "",
+    "knex": "./node_modules/.bin/knex",
+    "knex:migrate": "knex --knexfile ./src/db/knexfile.ts migrate:make _ -x ts",
+    "knex:push": "knex --knexfile ./src/db/knexfile.ts migrate:latest",
+    "knex:push:prod": "knex --knexfile ./src/db/knexfile.ts migrate:latest --env production",
+    "knex:rollback": "knex --knexfile ./src/db/knexfile.ts migrate:rollback"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.3",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0",
+    "zod": "^3.23.8"
+  }
+}
