@@ -3,6 +3,20 @@ import { KNEX } from "../db";
 
 @injectable()
 export class UserReposistory {
+  async findById(id: number) {
+    try {
+      const user = await KNEX("users").where({ id }).first();
+      return user;
+    } catch (e) {
+      console.log("findbyIdError==>", e);
+      return {
+        data: null,
+        success: false,
+        message: "An unexpected error has occurred",
+      };
+    }
+  }
+
   async findByUserName(username: string) {
     try {
       const user = await KNEX("users").where({ username }).first();

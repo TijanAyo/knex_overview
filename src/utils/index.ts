@@ -4,6 +4,10 @@ import jwt from "jsonwebtoken";
 const SALT_ROUND = process.env.SALT_ROUND;
 const JWT_SECRET = process.env.JWT_SECRET;
 
+if (!JWT_SECRET) {
+  throw new Error("JWT_SECRET is not defined");
+}
+
 export const hashPayload = async (data: string) => {
   const salt = Number(SALT_ROUND);
   if (isNaN(salt)) {

@@ -63,7 +63,7 @@ export const Authorize = async (
         console.log("JSONWEBTokenError: Invalid token signature");
         return res.status(400).json({
           data: null,
-          message: "Invalid token",
+          message: "Invalid token sig",
           success: false,
         });
       }
