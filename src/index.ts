@@ -5,7 +5,7 @@ import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 dotenv.config();
 
-import { authRoute } from "./routes/auth.route";
+import { authRoute, blogRoute } from "./routes";
 
 const app: Express = express();
 
@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Define Routes
 app.use("/api/auth", authRoute);
+app.use("/api/blog", blogRoute);
 
 app.get("/", (_req: Request, res: Response) => {
   return res
